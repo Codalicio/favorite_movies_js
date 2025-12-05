@@ -17,6 +17,10 @@ const backdropClickHandler = () => {
   toggleMovieModal();
 };
 
-backdropElement.addEventListener("click", backdropClickHandler);
+const cancelAddMovie = () => {
+  toggleMovieModal();
+};
 
 startAddMovieButton.addEventListener("click", toggleMovieModal);
+backdropElement.addEventListener("click", backdropClickHandler);
+cancelAddMovieButton.addEventListener("click", cancelAddMovie);
