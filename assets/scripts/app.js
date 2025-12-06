@@ -4,6 +4,7 @@ const backdropElement = document.getElementById("backdrop");
 const cancelAddMovieButton =
   addMovieModalElement.querySelector(".btn--passive");
 const confirmAddMovieButton = cancelAddMovieButton.nextElementSibling;
+const userInputElements = addMovieModalElement.querySelectorAll("input");
 
 const toggleBackdrop = () => {
   backdropElement.classList.toggle("visible");
@@ -22,6 +23,24 @@ const cancelAddMovieHandler = () => {
   toggleMovieModal();
 };
 
+const addMovieHandler = () => {
+  const titleValue = userInputElements[0].value;
+  const imageUrlValue = userInputElements[1].value;
+  const ratingValue = userInputElements[2].value;
+
+  if (
+    titleValue.trim() === "" ||
+    imageUrlValue.trim() === "" ||
+    ratingValue.trim() === "" ||
+    +ratingValue < 1 ||
+    +ratingValue > 5
+  ) {
+    alert("Required Fields are missing or incorrect rating selection");
+    return;
+  }
+};
+
 startAddMovieButton.addEventListener("click", toggleMovieModal);
 backdropElement.addEventListener("click", backdropClickHandler);
 cancelAddMovieButton.addEventListener("click", cancelAddMovieHandler);
+confirmAddMovieButton.addEventListener("click", addMovieHandler);
