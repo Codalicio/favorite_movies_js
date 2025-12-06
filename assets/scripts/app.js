@@ -6,6 +6,7 @@ const cancelAddMovieButton =
 const confirmAddMovieButton = cancelAddMovieButton.nextElementSibling;
 const userInputElements = addMovieModalElement.querySelectorAll("input");
 const entryTextSectionElement = document.getElementById("entry-text");
+const listRoot = document.getElementById("movie-list");
 
 const movies = [];
 
@@ -41,6 +42,21 @@ const cancelAddMovieHandler = () => {
   clearMovieInputs();
 };
 
+const renderNewMovieElement = (title, imageUrl, rating) => {
+  const newMovieElement = document.createElement("li");
+  newMovieElement.className = "movie-element";
+  newMovieElement.innerHTML = `
+  <div class="movie-element__image">
+    <img src="${imageUrl}" alt="${title}" />
+  </div>
+  <div class="movie-element__info">
+    <h2>${title}</h2>
+    <p>${rating}/5 stars</p>
+  </div>
+  `;
+  listRoot.appendChild(newMovieElement);
+};
+
 const addMovieHandler = () => {
   const titleValue = userInputElements[0].value;
   const imageUrlValue = userInputElements[1].value;
@@ -68,6 +84,7 @@ const addMovieHandler = () => {
   toggleMovieModal();
   clearMovieInputs();
   updateUi();
+  renderNewMovieElement(titleValue, imageUrlValue, ratingValue);
 };
 
 startAddMovieButton.addEventListener("click", toggleMovieModal);
