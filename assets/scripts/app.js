@@ -5,6 +5,7 @@ const cancelAddMovieButton =
   addMovieModalElement.querySelector(".btn--passive");
 const confirmAddMovieButton = cancelAddMovieButton.nextElementSibling;
 const userInputElements = addMovieModalElement.querySelectorAll("input");
+const entryTextSectionElement = document.getElementById("entry-text");
 
 const movies = [];
 
