@@ -6,6 +6,8 @@ const cancelAddMovieButton =
 const confirmAddMovieButton = cancelAddMovieButton.nextElementSibling;
 const userInputElements = addMovieModalElement.querySelectorAll("input");
 
+const movies = [];
+
 const toggleBackdrop = () => {
   backdropElement.classList.toggle("visible");
 };
