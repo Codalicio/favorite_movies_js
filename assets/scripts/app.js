@@ -21,8 +21,15 @@ const backdropClickHandler = () => {
   toggleMovieModal();
 };
 
+const clearMovieInputs = () => {
+  for (const userInput of userInputElements) {
+    userInput.value = "";
+  }
+};
+
 const cancelAddMovieHandler = () => {
   toggleMovieModal();
+  clearMovieInputs();
 };
 
 const addMovieHandler = () => {
@@ -40,6 +47,17 @@ const addMovieHandler = () => {
     alert("Required Fields are missing or incorrect rating selection");
     return;
   }
+
+  const newMovie = {
+    title: titleValue,
+    image: imageUrlValue,
+    rating: ratingValue,
+  };
+
+  movies.push(newMovie);
+  console.log(movies);
+  toggleMovieModal();
+  clearMovieInputs();
 };
 
 startAddMovieButton.addEventListener("click", toggleMovieModal);
