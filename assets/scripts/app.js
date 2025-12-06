@@ -9,6 +9,14 @@ const entryTextSectionElement = document.getElementById("entry-text");
 
 const movies = [];
 
+const updateUi = () => {
+  if (movies.length === 0) {
+    entryTextSectionElement.style.display = "block";
+  } else {
+    entryTextSectionElement.style.display = "none";
+  }
+};
+
 const toggleBackdrop = () => {
   backdropElement.classList.toggle("visible");
 };
@@ -59,6 +67,7 @@ const addMovieHandler = () => {
   console.log(movies);
   toggleMovieModal();
   clearMovieInputs();
+  updateUi();
 };
 
 startAddMovieButton.addEventListener("click", toggleMovieModal);
